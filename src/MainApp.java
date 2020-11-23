@@ -1,29 +1,31 @@
+import model.Bug;
+
 public class MainApp {
 
     public static void main(String[] args) {
 
-//        User piotr = new User("Piotr", "Testowy", "asd@asd.pl", 13);
-//        piotr.getFullName();
-//        piotr.getAllData();
-//        System.out.println(piotr.getUserAge());
-//        System.out.println(piotr.isUserAdult());
-//        piotr.greetings(piotr.firstName);
-//        System.out.println(piotr.yourAgePlusTen(piotr.age));
-//        piotr.greetings(piotr.firstName, piotr.lastName);
-//
-//        System.out.println("");
-//
-//        User tomek = new User("Tomek", "Testowy", "asd2@asd.pl", 25);
-//        tomek.getFullName();
-//        tomek.getAllData();
-//        System.out.println(tomek.getUserAge());
-//        System.out.println(tomek.isUserAdult());
-//        tomek.howOldAreYou(tomek.firstName, tomek.age);
-//
-//        System.out.println("");
-//
-//        User filip = new User("Filip", "Testowy", "mail@mail.com", 25);
-//        filip. getAllData();
+        model.User piotr = new model.User("Piotr", "Testowy", "asd@asd.pl", 13);
+        piotr.getFullName();
+        piotr.getAllData();
+        System.out.println(piotr.getUserAge());
+        System.out.println(piotr.isUserAdult());
+        piotr.greetings(piotr.getFirstName());
+        System.out.println(piotr.yourAgePlusTen(piotr.getAge()));
+        piotr.greetings(piotr.getFirstName(), piotr.getLastName());
+
+        System.out.println("");
+
+        model.User tomek = new model.User("Tomek", "Testowy", "asd2@asd.pl", 25);
+        tomek.getFullName();
+        tomek.getAllData();
+        System.out.println(tomek.getUserAge());
+        System.out.println(tomek.isUserAdult());
+        tomek.howOldAreYou(tomek.getFirstName(), tomek.getAge());
+
+        System.out.println("");
+
+        model.User filip = new model.User("Filip", "Testowy", "mail@mail.com", 25);
+        filip. getAllData();
 
 
         Bug bug = new Bug("Długi opis", "asd@asd.pl", 5);

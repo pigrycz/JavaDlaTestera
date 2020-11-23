@@ -1,0 +1,93 @@
+package model;
+
+public class User {
+    private String firstName;
+    private String lastName;
+    private String email;
+    private int age;
+    private boolean isAdult;
+
+    public User(String firstName, String lastName, String email, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.age = age;
+        this.isAdult = this.isUserAdult();
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        if (email.endsWith(".ru")){
+            System.out.println("RU emails not allowed");
+        } else {
+            this.email = email;
+        }
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public boolean isAdult() {
+        return isAdult;
+    }
+
+    public void getFullName() {
+        System.out.println(firstName + " " + lastName);
+    }
+
+    public void getAllData(){
+        System.out.println(firstName + " " + lastName + " " + email + " " + age + " " + isAdult);
+    }
+
+    public int getUserAge() {
+        return age;
+    }
+
+    public boolean isUserAdult() {
+        if (age >= 18) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void greetings(String name) {
+        System.out.println("Hi " + name + "! Nice to see you!");
+    }
+
+    public void greetings(String firstName, String lastName) {
+        System.out.println("Hi " + firstName + " " + lastName + "! Nice to see you!");
+    }
+
+    public void howOldAreYou(String name, int userAge) {
+        System.out.println(name + ", you are " + userAge + " years old.");
+    }
+
+    public int yourAgePlusTen(int age) {
+        return age+10;
+    }
+}
