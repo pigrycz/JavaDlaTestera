@@ -6,7 +6,7 @@ public class Bug {
     private String description;
     private String reporterEmail;
     private int priority;
-    private String status;
+    private BugStatus status;
     private String emailRegex = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"" +
             "(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9]" +
             "(?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:" +
@@ -24,7 +24,7 @@ public class Bug {
         } else {
             this.priority = priority;
         }
-        this.status = "Otwarty";
+        this.status = BugStatus.OPENED;
     }
 
     public String getDescription() {
@@ -63,7 +63,7 @@ public class Bug {
         return priority;
     }
 
-    public String getStatus() {
+    public BugStatus getStatus() {
         return status;
     }
 
@@ -80,10 +80,10 @@ public class Bug {
     }
 
     public void closeBug(){
-        status = "Zamknięty";
+        status = BugStatus.CLOSED;
     }
 
     public void reopenBug(){
-        status = "Otwarty";
+        status = BugStatus.OPENED;
     }
 }
