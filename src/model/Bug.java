@@ -1,6 +1,8 @@
 package model;
 
 public class Bug {
+    private static final int MIN_PRIORITY = 5;
+    private static final int MAX_PRIORITY = 1;
     private String description;
     private String reporterEmail;
     private int priority;
@@ -13,12 +15,12 @@ public class Bug {
     public Bug(String description, String reporterEmail, int priority){
         this.description = description;
         this.reporterEmail = reporterEmail;
-        if (priority > 5){
-            this.priority = 5;
-            System.out.println("Ustawiony minimalny priorytet równy 5");
-        } else if (priority < 1){
-            this.priority = 1;
-            System.out.println("Ustawiony maksymalny priorytet równy 1");
+        if (priority > MIN_PRIORITY){
+            this.priority = MIN_PRIORITY;
+            System.out.println("Ustawiony minimalny priorytet równy " + MIN_PRIORITY);
+        } else if (priority < MAX_PRIORITY){
+            this.priority = MAX_PRIORITY;
+            System.out.println("Ustawiony maksymalny priorytet równy " + MAX_PRIORITY);
         } else {
             this.priority = priority;
         }
@@ -50,8 +52,8 @@ public class Bug {
     }
 
     public void setPriority(int priority) {
-        if (priority > 5 || priority < 0) {
-            System.out.println("Priorytet musi być liczbą między 1 a 5");
+        if (priority > MIN_PRIORITY || priority < MAX_PRIORITY) {
+            System.out.println("Priorytet musi być liczbą między " + MAX_PRIORITY + " a " + MIN_PRIORITY);
         } else {
             this.priority = priority;
         }
