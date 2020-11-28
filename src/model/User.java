@@ -1,11 +1,17 @@
 package model;
 
 public class User {
+    private static int userCounter = 0;
+
     private String firstName;
     private String lastName;
     private String email;
     private int age;
     private boolean isAdult;
+
+    public static int getUserCounter() {
+        return userCounter;
+    }
 
     public User(String firstName, String lastName, String email, int age) {
         this.firstName = firstName;
@@ -13,6 +19,7 @@ public class User {
         this.email = email;
         this.age = age;
         this.isAdult = this.isUserAdult();
+        userCounter++;
     }
 
     public String getFirstName() {

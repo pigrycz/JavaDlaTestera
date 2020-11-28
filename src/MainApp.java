@@ -1,6 +1,6 @@
-import model.Bug;
-import tables.MyOwnSolutions;
-import tables.TablesExcersises;
+import model.User;
+import utils.StringUtils;
+import utils.WeekUtils;
 
 public class MainApp {
 
@@ -27,7 +27,9 @@ public class MainApp {
 //        System.out.println("");
 //
 //        model.User filip = new model.User("Filip", "Testowy", "mail@mail.com", 25);
-//        filip. getAllData();
+//        filip.getAllData();
+//
+//        System.out.println(User.getUserCounter());
 //
 //
 //        Bug bug = new Bug("Długi opis", "asd@asd.pl", 5);
@@ -44,13 +46,22 @@ public class MainApp {
 //        Bug bug3 = new Bug("Bardzo długi opis", "email@email.com", -1);
 //        System.out.println(bug3.getPriority());
 
-        MyOwnSolutions myOwnSolutions = new MyOwnSolutions();
-        myOwnSolutions.exerciseOne();
-        System.out.println("");
-        myOwnSolutions.exerciseTwo();
-        System.out.println("");
-        myOwnSolutions.exerciseThree();
-        System.out.println("");
-        myOwnSolutions.homework();
+//        MyOwnSolutions myOwnSolutions = new MyOwnSolutions();
+//        myOwnSolutions.exerciseOne();
+//        System.out.println("");
+//        myOwnSolutions.exerciseTwo();
+//        System.out.println("");
+//        myOwnSolutions.exerciseThree();
+//        System.out.println("");
+//        myOwnSolutions.homework();
+
+//        While whileLoop = new While();
+//        whileLoop.whileLoop();
+
+        String string = StringUtils.getFormattedText("Testetestasdasd");
+        System.out.println(string);
+
+        System.out.println(WeekUtils.MONDAY);
+
     }
 }
