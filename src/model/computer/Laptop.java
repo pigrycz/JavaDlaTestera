@@ -22,4 +22,48 @@ public class Laptop extends Computer {
     public void setBatteryLevel(int newBatteryLevel) {
         batteryLevel = newBatteryLevel;
     }
+
+    @Override
+    public void switchOff(){
+        System.out.println("Wyłączam laptopa: " + name);
+        state = false;
+    }
+
+    @Override
+    public int volumeUp(){
+        volumeLevel +=5;
+        if (volumeLevel >= 100) {
+            return 100;
+        } else {
+            return volumeLevel;
+        }
+    }
+
+    @Override
+    public int volumeDown(){
+        volumeLevel -=5;
+        if (volumeLevel <= 0) {
+            return 0;
+        } else {
+            return volumeLevel;
+        }
+    }
+
+    @Override
+    public int volumeUp(int increment) {
+        volumeLevel += increment;
+        if (volumeLevel >= 100) {
+            volumeLevel = 100;
+        }
+        return volumeLevel;
+    }
+
+    @Override
+    public int volumeDown(int increment){
+        volumeLevel -= increment;
+        if (volumeLevel <= 0) {
+            volumeLevel = 0;
+        }
+        return volumeLevel;
+    }
 }

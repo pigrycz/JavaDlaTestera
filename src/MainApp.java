@@ -1,4 +1,5 @@
 import model.User;
+import model.computer.Computer;
 import model.computer.Laptop;
 import model.computer.PC;
 import utils.StringUtils;
@@ -65,17 +66,23 @@ public class MainApp {
 //
 //        System.out.println(WeekUtils.MONDAY);
 
-        PC officeComputer = new PC("Office computer", "HP", 500, 128);
-        Laptop gamingLaptop = new Laptop("Legion", "Lenovo", 1000, 256, 50);
+        Computer officeComputer1 = new PC("Office computer1", "HP", 500, 128);
+        Computer officeComputer2 = new PC("Office computer2", "HP", 500, 128);
+        Computer officeComputer3 = new PC("Office computer3", "HP", 500, 128);
+        Computer gamingLaptop = new Laptop("Legion", "Lenovo", 1000, 256, 50);
+        Computer laptop = new Laptop("Laptop", "Lenovo", 1000, 256, 50);
 
+        Computer[] computers = {officeComputer1, officeComputer2, officeComputer3, laptop, gamingLaptop};
+        for (Computer computer: computers) {
+            computer.switchOff();
+        }
 
-        gamingLaptop.setBatteryLevel(0);
-        gamingLaptop.switchOn();
+        System.out.println(officeComputer1.volumeUp(15));
+        System.out.println(officeComputer1.volumeDown(10));
+        System.out.println(officeComputer1.volumeDown(10));
 
-        System.out.println();
-
-        officeComputer.switchOn();
-        officeComputer.plugIn();
-        officeComputer.switchOn();
+        System.out.println(gamingLaptop.volumeUp(120));
+        System.out.println(gamingLaptop.volumeDown(30));
+        System.out.println(gamingLaptop.volumeDown(80));
     }
 }

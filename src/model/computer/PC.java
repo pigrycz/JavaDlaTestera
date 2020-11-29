@@ -30,4 +30,47 @@ public class PC extends Computer {
     public void plugOut(){
         powerSupply = false;
     }
+
+    @Override
+    public void switchOff(){
+        System.out.println("Wyłączam PC: " + name);
+        state = false;
+    }
+
+    @Override
+    public int volumeUp(){
+        volumeLevel +=1;
+        if (volumeLevel >= 100) {
+            volumeLevel = 100;
+        }
+        return volumeLevel;
+    }
+
+
+    @Override
+    public int volumeDown(){
+        volumeLevel -= 1;
+        if(volumeLevel <= 0) {
+            volumeLevel = 0;
+        }
+        return volumeLevel;
+    }
+
+    @Override
+    public int volumeUp(int increment) {
+        volumeLevel += increment;
+        if (volumeLevel >= 100) {
+            volumeLevel = 100;
+        }
+        return volumeLevel;
+    }
+
+    @Override
+    public int volumeDown(int increment){
+        volumeLevel -= increment;
+        if (volumeLevel <= 0) {
+            volumeLevel = 0;
+        }
+        return volumeLevel;
+    }
 }
