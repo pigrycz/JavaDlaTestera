@@ -1,4 +1,6 @@
 import model.User;
+import model.computer.Laptop;
+import model.computer.PC;
 import utils.StringUtils;
 import utils.WeekUtils;
 
@@ -58,10 +60,22 @@ public class MainApp {
 //        While whileLoop = new While();
 //        whileLoop.whileLoop();
 
-        String string = StringUtils.getFormattedText("Testetestasdasd");
-        System.out.println(string);
+//        String string = StringUtils.getFormattedText("Testetestasdasd");
+//        System.out.println(string);
+//
+//        System.out.println(WeekUtils.MONDAY);
 
-        System.out.println(WeekUtils.MONDAY);
+        PC officeComputer = new PC("Office computer", "HP", 500, 128);
+        Laptop gamingLaptop = new Laptop("Legion", "Lenovo", 1000, 256, 50);
 
+
+        gamingLaptop.setBatteryLevel(0);
+        gamingLaptop.switchOn();
+
+        System.out.println();
+
+        officeComputer.switchOn();
+        officeComputer.plugIn();
+        officeComputer.switchOn();
     }
 }
