@@ -77,8 +77,9 @@ public class MainApp {
             computer.switchOff();
         }
 
-        System.out.println(officeComputer1.volumeUp(15));
-        System.out.println(officeComputer1.volumeDown(10));
+        System.out.println(officeComputer1.volumeUp(-15));
+        System.out.println(officeComputer1.volumeUp(30));
+        System.out.println(officeComputer1.volumeDown(-10));
         System.out.println(officeComputer1.volumeDown(10));
 
         System.out.println(gamingLaptop.volumeUp(120));

@@ -33,36 +33,43 @@ public class Laptop extends Computer {
     public int volumeUp(){
         volumeLevel +=5;
         if (volumeLevel >= 100) {
-            return 100;
-        } else {
-            return volumeLevel;
+            volumeLevel = 100;
         }
+        return volumeLevel;
     }
+
 
     @Override
     public int volumeDown(){
-        volumeLevel -=5;
-        if (volumeLevel <= 0) {
-            return 0;
-        } else {
-            return volumeLevel;
+        volumeLevel -= 5;
+        if(volumeLevel <= 0) {
+            volumeLevel = 0;
         }
+        return volumeLevel;
     }
 
     @Override
     public int volumeUp(int increment) {
-        volumeLevel += increment;
-        if (volumeLevel >= 100) {
-            volumeLevel = 100;
+        if (increment < 0) {
+            System.out.println("Volume change should be a positive number. Volume has not been changed");
+        } else {
+            volumeLevel += increment;
+            if (volumeLevel > 100) {
+                volumeLevel = 100;
+            }
         }
         return volumeLevel;
     }
 
     @Override
     public int volumeDown(int increment){
-        volumeLevel -= increment;
-        if (volumeLevel <= 0) {
-            volumeLevel = 0;
+        if (increment < 0) {
+            System.out.println("Volume change should be a positive number. Volume has not been changed");
+        } else {
+            volumeLevel -= increment;
+            if (volumeLevel < 0) {
+                volumeLevel = 0;
+            }
         }
         return volumeLevel;
     }
