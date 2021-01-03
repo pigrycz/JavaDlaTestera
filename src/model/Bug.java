@@ -1,6 +1,8 @@
 package model;
 
-public class Bug implements ConsoleNotification {
+import java.util.Objects;
+
+public class Bug implements ConsoleNotification, Comparable<Bug> {
     private static final int MIN_PRIORITY = 5;
     private static final int MAX_PRIORITY = 1;
     private String description;
@@ -85,7 +87,29 @@ public class Bug implements ConsoleNotification {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bug bug = (Bug) o;
+        return priority == bug.priority &&
+                Objects.equals(description, bug.description) &&
+                Objects.equals(bugReporter, bug.bugReporter) &&
+                status == bug.status;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(description, bugReporter, priority, status);
+    }
+
+    @Override
     public void notifyStatusChange() {
         System.out.println("Bug status has changed to " + status.getDescription());
+    }
+
+    @Override
+    public int compareTo(Bug bug) {
+        int compareResult = this.getDescription().compareTo(bug.getDescription());
+        return compareResult;
     }
 }
