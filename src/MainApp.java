@@ -13,5 +13,7 @@ public class MainApp {
         bug.reopenBug();
 
         System.out.println(bug.toString());
+
+        System.out.println(janusz.getBugCount());
     }
 }

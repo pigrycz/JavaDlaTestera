@@ -21,6 +21,7 @@ public class Bug implements ConsoleNotification {
             this.priority = priority;
         }
         this.status = BugStatus.OPENED;
+        bugReporter.setBugCount(1);
     }
 
     public String getDescription() {

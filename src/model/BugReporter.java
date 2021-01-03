@@ -57,6 +57,10 @@ public class BugReporter {
         }
     }
 
+    public void setBugCount(int bugAmount) {
+        this.bugCount = bugCount + bugAmount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
