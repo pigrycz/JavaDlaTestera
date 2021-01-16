@@ -1,5 +1,7 @@
 package model.computer;
 
+import java.util.Objects;
+
 abstract public class Computer {
     protected String name;
     protected String type;
@@ -70,4 +72,34 @@ abstract public class Computer {
     abstract public int volumeUp(int volumeLevel);
 
     abstract public int volumeDown(int volumeLevel);
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Computer computer = (Computer) o;
+        return state == computer.state &&
+                volumeLevel == computer.volumeLevel &&
+                Objects.equals(name, computer.name) &&
+                Objects.equals(type, computer.type) &&
+                Objects.equals(hdd, computer.hdd) &&
+                Objects.equals(ram, computer.ram);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, type, hdd, ram, state, volumeLevel);
+    }
+
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", hdd=" + hdd +
+                ", ram=" + ram +
+                ", state=" + state +
+                ", volumeLevel=" + volumeLevel +
+                '}';
+    }
 }
