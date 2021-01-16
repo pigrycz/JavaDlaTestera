@@ -49,7 +49,7 @@ public class MainApp {
 
         // Zadanie 5.
         List<Computer> sorted = computers.stream()
-                .sorted(Comparator.comparing(Computer::getType).thenComparing(Computer::getName))
+                .sorted(Comparator.comparing(Computer::getName).thenComparing(Computer::getType))
                 .collect(Collectors.toList());
 
         System.out.println(sorted);
