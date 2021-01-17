@@ -1,5 +1,8 @@
 package model;
 
+import enums.Gender;
+import exceptions.IllegalEmailFormatException;
+
 import java.util.Objects;
 
 public class User implements Comparable<User> {
@@ -9,17 +12,19 @@ public class User implements Comparable<User> {
     private String lastName;
     private String email;
     private int age;
+    private Gender gender;
     private boolean isAdult;
 
     public static int getUserCounter() {
         return userCounter;
     }
 
-    public User(String firstName, String lastName, String email, int age) {
+    public User(String firstName, String lastName, String email, int age, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.age = age;
+        this.gender = gender;
         this.isAdult = this.isUserAdult();
         userCounter++;
     }
@@ -44,9 +49,9 @@ public class User implements Comparable<User> {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) throws IllegalEmailFormatException {
         if (email.endsWith(".ru")){
-            System.out.println("RU emails not allowed");
+            throw new IllegalEmailFormatException("Mails from Russia are not acceptable");
         } else {
             this.email = email;
         }
@@ -64,12 +69,20 @@ public class User implements Comparable<User> {
         return isAdult;
     }
 
+    public String getGender() {
+        return gender.getGender();
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
     public void getFullName() {
         System.out.println(firstName + " " + lastName);
     }
 
     public void getAllData(){
-        System.out.println(firstName + " " + lastName + " " + email + " " + age + " " + isAdult);
+        System.out.println(firstName + " " + lastName + " " + email + " " + age + " " + isAdult + " " + gender.getGender());
     }
 
     public int getUserAge() {
@@ -107,6 +120,7 @@ public class User implements Comparable<User> {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", age=" + age +
+                ", gender=" + this.getGender() +
                 ", isAdult=" + isAdult +
                 '}';
     }

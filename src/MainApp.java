@@ -1,116 +1,117 @@
-import model.computer.*;
+import enums.Gender;
+import enums.WeekDays;
+import model.Bug;
+import model.BugReporter;
+import model.User;
 
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.NoSuchElementException;
+
 
 public class MainApp {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        List<Computer> computers = new ArrayList<>();
-        computers.add(new Laptop("MB PRO 1", "PRO 1", new Hdd("Apple", 500), new Ram("Brand", 128), 100));
-        computers.add(new Laptop("MB PRO 2", "PRO 2", new Hdd("Apple", 500), new Ram("Brand", 128), 100));
-        computers.add(new Laptop("MB PRO 3", "PRO 3", new Hdd("Apple", 256), new Ram("Brand", 128), 100));
-        computers.add(new Laptop("MB PRO 4", "PRO 4", new Hdd("Apple", 500), new Ram("Brand", 128), 100));
-        computers.add(new PC("PC 1", "BBB", new Hdd("Dell", 500), new Ram("Brand", 128)));
-        computers.add(new PC("PC 2", "AAA", new Hdd("Dell", 256), new Ram("Brand", 256)));
-        computers.add(new PC("PC 3", "BBB", new Hdd("Dell", 500), new Ram("Brand", 128)));
+//        try {
+//            BufferedReader bufferedReader = new BufferedReader(new FileReader("test.txt"));
+//
+//            String line = bufferedReader.readLine();
+//
+//            while(line != null){
+//                System.out.println(line);
+//                line = bufferedReader.readLine();
+//            }
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            System.out.println("Zakończono czytanie pliku");
+//        }
 
-        // Zadanie 1.
-        long count = computers.stream()
-                .filter(computer -> computer.getRam().getSize() > 128)
-                .count();
+//        BufferedReader bufferedReader = new BufferedReader(new FileReader("test1.txt"));
+//                    String line = bufferedReader.readLine();
+//
+//            while(line != null) {
+//                System.out.println(line);
+//                line = bufferedReader.readLine();
+//            }
 
-        System.out.println(count);
+//
+//            Bug bug = new Bug("opis", new BugReporter("Imię", "nazwisko", "asd@asd.pl"), 1);
+//        System.out.println(bug.getDescription());
+//
+//        bug = null;
+//        try {
+//            System.out.println(bug.getDescription());
+//        } catch (NullPointerException exception) {
+//            System.out.println("Błądddd");
+//        }
 
-        // Zadanie 2.
-        List<String> typyKompów = computers.stream()
-                .map(computer -> computer.getType())
-                .distinct()
-                .collect(Collectors.toList());
+//        List<String> names = new ArrayList<>();
+//        names.add("Name");
+//        names.add("Namem");
+//        names.add("Nameemem");
+//
+//        names.stream()
+//                .filter(s -> s.startsWith("A"))
+//                .findFirst()
+//                .orElseThrow(() -> new IllegalStateException("komunikat"));
 
-        System.out.println(typyKompów);
 
-        // Zadanie 3.
-        Optional<Computer> maxRam = computers.stream()
-                .max(Comparator.comparingInt((computer -> computer.getRam().getSize())));
+        //ENUM
+        User user = new User("a", "g", "c", 12, Gender.FEMALE);
+        User user1 = new User("b", "h", "c", 12, Gender.MALE);
+        User user2 = new User("b", "i", "c", 12, Gender.MALE);
+        User user3 = new User("d", "j", "c", 12, Gender.FEMALE);
+        User user4 = new User("e", "k", "c", 12, Gender.MALE);
+        User user5 = new User("f", "l", "c", 12, Gender.FEMALE);
 
-        maxRam.ifPresentOrElse(computer -> System.out.println(computer), () -> System.out.println("Nie ma komputerów na liście"));
+        List<User> users = new ArrayList<>();
+        users.add(user);
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+        users.add(user4);
+        users.add(user5);
 
-        // Zadanie 4.
-        List<Computer> lessThan500Hdd = computers.stream()
-                .filter(computer -> computer.getHdd().getSize() < 500)
-                .collect(Collectors.toList());
+        users.stream()
+                .filter(u -> u.getGender() == Gender.FEMALE.getGender())
+                .forEach(System.out::println);
 
-        System.out.println(lessThan500Hdd);
 
-        // Zadanie 5.
-        List<Computer> sorted = computers.stream()
-                .sorted(Comparator.comparing(Computer::getName).thenComparing(Computer::getType))
-                .collect(Collectors.toList());
+        // Wyjątki
 
-        System.out.println(sorted);
+        BufferedWriter file = new BufferedWriter(new FileWriter("zapisanyplik.txt"));
+        file.write("Piotr");
+        file.newLine();
+        file.write("Marta");
+        file.newLine();
+        file.write("Roman");
+        file.close();
 
-        // Zadanie 6.
-        // get()
-        System.out.println(maxRam.get());
+        List names = new ArrayList();
 
-        // isPresent()
-        if (maxRam.isPresent()){
-            System.out.println(maxRam.get());
-        } else {
-            System.out.println("Nie ma takich komputerów");
+        BufferedReader readFile = new BufferedReader(new FileReader("zapisanyplik.txt"));
+        String line = readFile.readLine();
+        while(line != null) {
+                names.add(line);
+                line = readFile.readLine();
+            }
+
+        try {
+            names.stream()
+                    .filter(name -> name.equals("Lucjan"))
+                    .findFirst()
+                    .orElseThrow(NoSuchElementException::new);
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
         }
 
-        // isEmpty()
-        if (maxRam.isEmpty()){
-            System.out.println("Dodaj jakiś komputer");
-        } else {
-            System.out.println(maxRam.get());
-        }
-
-        // orElse()
-        computers.get(0).switchOn();
-
-        Boolean aBoolean = computers.stream()
-                .map(Computer::getState)
-                .filter(state -> state.equals(true))
-                .findFirst()
-                .orElse(false);
-
-        System.out.println(aBoolean);
-
-        // orElseGet()
-        Computer computer1 = computers.stream()
-                .filter(computer -> computer.getState() == true)
-                .findFirst()
-                .orElseGet(() -> new Laptop("WłączonyLaptop", "Lapek", new Hdd("Brand", 122), new Ram("RAM", 32), 100));
-
-        if (computer1.getState() == false) {
-            computer1.switchOn();
-        }
-
-        System.out.println(computer1);
-
-        // orElseThrow()
-        computers.stream()
-                .filter(computer -> computer.getState() == true)
-                .findFirst()
-                .orElseThrow(() -> new IllegalStateException("at least one computer should be running"));
-
-        //ifPresent()
-        computers.stream()
-                .filter(computer -> computer.getType() == "AAA")
-                .findFirst()
-                .ifPresent(computer -> System.out.println(computer));
-
-        // ifPresentOrElse()
-        computers.stream()
-                .filter(computer -> computer.getType() == "CCC")
-                .findFirst()
-                .ifPresentOrElse(computer -> System.out.println(computer), () -> System.out.println("Nie ma komputerów o wybranym typie"));
+        Bug bug = new Bug("description", new BugReporter("Name", "Lastname", "email@email.com"), 3);
+        bug.setPriority(-10);
     }
 }

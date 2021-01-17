@@ -1,5 +1,8 @@
 package model;
 
+import exceptions.IllegalBugPriorityException;
+import exceptions.IllegalEmailFormatException;
+
 import java.util.Objects;
 
 public class Bug implements ConsoleNotification, Comparable<Bug> {
@@ -40,7 +43,7 @@ public class Bug implements ConsoleNotification, Comparable<Bug> {
 
     public void setPriority(int priority) {
         if (priority > MIN_PRIORITY || priority < MAX_PRIORITY) {
-            System.out.println("Priorytet musi być liczbą między " + MAX_PRIORITY + " a " + MIN_PRIORITY);
+            throw new IllegalEmailFormatException("Bug priority needs to be between: " + MAX_PRIORITY + " and " + MIN_PRIORITY);
         } else {
             this.priority = priority;
         }

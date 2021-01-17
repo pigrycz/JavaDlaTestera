@@ -58,15 +58,7 @@ public class PC extends Computer {
 
     @Override
     public int volumeUp(int increment) {
-        if (increment < 0) {
-            System.out.println("Volume change should be a positive number. Volume has not been changed");
-        } else {
-            volumeLevel += increment;
-            if (volumeLevel > 100) {
-                volumeLevel = 100;
-            }
-        }
-        return volumeLevel;
+        throw new UnsupportedOperationException("nie wspoierana metoda");
     }
 
     @Override
