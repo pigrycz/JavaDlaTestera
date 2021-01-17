@@ -134,12 +134,13 @@ public class User implements Comparable<User> {
                 isAdult == user.isAdult &&
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(lastName, user.lastName) &&
-                Objects.equals(email, user.email);
+                Objects.equals(email, user.email) &&
+                gender == user.gender;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, email, age, isAdult);
+        return Objects.hash(firstName, lastName, email, age, gender, isAdult);
     }
 
     @Override
